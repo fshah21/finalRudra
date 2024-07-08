@@ -1,5 +1,4 @@
-const { Sequelize } = require('sequelize');
-const userModel = require('./user');
+const { Sequelize, DataTypes } = require('sequelize');
 const pg = require('pg');
 
 const sequelize = new Sequelize(
@@ -14,4 +13,22 @@ const sequelize = new Sequelize(
   }
 );
 
-module.exports = { sequelize, userModel };
+const User = sequelize.define('User', {
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
+
+// Export the sequelize instance and User model
+module.exports = { sequelize, User };

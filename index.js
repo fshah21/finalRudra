@@ -27,7 +27,11 @@ app.post('/signup', async (req, res) => {
     res.status(200).send('Login successful');
   });
 
-app.listen(PORT, async () => {
-  console.log(`Server is running on port ${PORT}`);
-  await sequelize.sync({ alter: true }); // Synchronize database schema
-});
+  sequelize.sync({ alter: true }).then(() => {
+    console.log('Database synchronized');
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  }).catch(error => {
+    console.error('Unable to sync database:', error);
+  });
