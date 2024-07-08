@@ -8,6 +8,7 @@ const sequelize = new Sequelize(
   {
     host: 'roundhouse.proxy.rlwy.net',
     dialect: 'postgres',
+    port: '23982'
   }
 );
 
