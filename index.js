@@ -3,6 +3,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const { sequelize, User } = require('./models/index');
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
