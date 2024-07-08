@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const userModel = require('./user');
+const pg = require('pg');
 
 const sequelize = new Sequelize(
   'railway', // database name
@@ -8,7 +9,8 @@ const sequelize = new Sequelize(
   {
     host: 'roundhouse.proxy.rlwy.net',
     dialect: 'postgres',
-    port: '23982'
+    port: '23982',
+    dialectModule: pg
   }
 );
 
