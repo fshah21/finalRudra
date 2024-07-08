@@ -8,6 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
+    console.log("in signup");
     const { email, username, password } = req.body;
     try {
       const user = await User.create({ email, username, password });
